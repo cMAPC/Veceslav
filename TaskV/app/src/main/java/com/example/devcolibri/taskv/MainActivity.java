@@ -55,12 +55,10 @@ public class MainActivity extends ActionBarActivity {
                 service.listUser(editText.getText().toString(), new Callback<List<User>>() {
                     @Override
                     public void success(List<User> users, Response response) {
-                       // Log.d("TAG", users.get(0).getName() + ", " + users.get(0).getDescription());
-                        textView.setText(users.get(0).getName() + ", " + users.get(0).getDescription());
                         for(int i = 0; i < users.size() ; i ++){
                             User obj = new User();
-                            obj.setName(users.get(i).getName());
-                            obj.setDescription(users.get(i).getDescription());
+                            obj.setName("Name : " + users.get(i).getName());
+                            obj.setDescription("Description : " + users.get(i).getDescription());
                             obj.setUrl(users.get(i).getUrl());
                             usersList.add(obj);
                         }
@@ -79,6 +77,11 @@ public class MainActivity extends ActionBarActivity {
 
 
 
+        UserAdapter adapter;
+        ListView listView;
+        listView = (ListView) findViewById(R.id.listView);
+        adapter = new UserAdapter(getBaseContext(), R.layout.row, usersList);
+        listView.setAdapter(adapter);
 
 
     }

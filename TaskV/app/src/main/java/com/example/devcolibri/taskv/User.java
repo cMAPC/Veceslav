@@ -1,9 +1,9 @@
 package com.example.devcolibri.taskv;
 
 public class User {
-    private String name;
-    private String description;
-    private String url;
+    public String name;
+    public String description;
+    public String url;
 
     public User(String name, String description, String url){
         this.name = name;

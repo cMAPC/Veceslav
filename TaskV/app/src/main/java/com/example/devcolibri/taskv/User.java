@@ -4,6 +4,7 @@ public class User {
     public String name;
     public String description;
     public String html_url;
+    public String fork;
 
     public User(String name, String description, String html_url){
         this.name = name;
@@ -11,6 +12,14 @@ public class User {
         this.html_url = html_url;
     }
     public User(){}
+
+    public String getFork() {
+        return fork;
+    }
+
+    public void setFork(String fork) {
+        this.fork = fork;
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -35,8 +44,6 @@ public class User {
     public String getDescription() {
         return description;
     }
-
-
 
 }
 

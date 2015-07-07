@@ -1,6 +1,7 @@
 package com.example.devcolibri.taskv;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -15,11 +16,13 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Handler;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -30,6 +33,7 @@ import retrofit.client.Response;
 public class MainActivity extends Activity {
 
     private EditText editText;
+    private ProgressDialog dialog;
 
     private boolean haveNetworkConnection() {
         boolean haveConnectedWifi = false;
@@ -54,7 +58,6 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         final ArrayList<User> usersList = new ArrayList<>();
-
         Button btn = (Button) findViewById(R.id.button);
         editText = (EditText) findViewById(R.id.editText);
         final ListView listView = (ListView) findViewById(R.id.listView);
@@ -62,7 +65,8 @@ public class MainActivity extends Activity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(everyThingIsValid()){
+                if (everyThingIsValid()) {
+                    progressDialog();
                     executeHTTPRequest(editText, usersList, listView);
                 }
             }
@@ -74,6 +78,14 @@ public class MainActivity extends Activity {
                 displayRepoUrl(position, usersList);
             }
         });
+    }
+
+    private void progressDialog() {
+        dialog = new ProgressDialog(MainActivity.this);
+        dialog.setMessage("Loading, please wait");
+        dialog.setTitle("Connecting server");
+        dialog.show();
+        dialog.setIndeterminate(false);
     }
 
     private void displayRepoUrl(int position, ArrayList<User> usersList) {
@@ -89,8 +101,8 @@ public class MainActivity extends Activity {
             return false;
         }
 
-        if(editText.getText().toString().matches("")){
-            Toast.makeText(getApplicationContext(), "Enter a name pleas in the text box !", Toast.LENGTH_SHORT).show();
+        if (editText.getText().toString().matches("")) {
+            Toast.makeText(getApplicationContext(), "Enter a name please in the text box !", Toast.LENGTH_SHORT).show();
             return false;
         }
 
@@ -110,11 +122,13 @@ public class MainActivity extends Activity {
                 UserAdapter adapter = new UserAdapter(getBaseContext(), users);
                 usersList.addAll(users);
                 listView.setAdapter(adapter);
+                dialog.cancel();
             }
 
             @Override
             public void failure(RetrofitError error) {
                 Toast.makeText(getApplicationContext(), "Enter a valide name !", Toast.LENGTH_SHORT).show();
+                dialog.cancel();
             }
         });
     }

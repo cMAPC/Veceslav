@@ -22,9 +22,13 @@ public class UserAdapter extends ArrayAdapter<User> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.row, parent, false);
         }
         TextView tvName = (TextView) convertView.findViewById(R.id.tvName);
-        tvName.setText(obj.name);
+        tvName.setText("Name : " + obj.name);
         TextView tvDescription = (TextView) convertView.findViewById(R.id.tvDescription);
-        tvDescription.setText(obj.description);
+        tvDescription.setText("Description : " + obj.description);
+        TextView tvFork = (TextView) convertView.findViewById(R.id.tvFork);
+        if (obj.getFork().equals("true")) {
+            tvFork.setText("F");
+        }
         return convertView;
     }
 }

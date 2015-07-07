@@ -3,12 +3,12 @@ package com.example.devcolibri.taskv;
 public class User {
     public String name;
     public String description;
-    public String url;
+    public String html_url;
 
-    public User(String name, String description, String url){
+    public User(String name, String description, String html_url){
         this.name = name;
         this.description = description;
-        this.url = url;
+        this.html_url = html_url;
     }
     public User(){}
 
@@ -20,8 +20,12 @@ public class User {
         this.description = description;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public String getHtml_url() {
+        return html_url;
+    }
+
+    public void setHtml_url(String html_url) {
+        this.html_url = html_url;
     }
 
     public String getName() {
@@ -32,9 +36,7 @@ public class User {
         return description;
     }
 
-    public String getUrl() {
-        return url;
-    }
+
 
 }
 

@@ -95,7 +95,7 @@ public class MainActivity extends Activity {
                                     obj.setDescription("Description : " + users.get(i).getDescription());
                                     //obj.setUrl(users.get(i).getUrl());
                                     usersList.add(obj);
-                                    urlList.add(i, users.get(i).getUrl());
+                                    urlList.add(i, users.get(i).getHtml_url());
                                 }
 
                                 listView.setAdapter(adapter);

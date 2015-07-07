@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.TextView;
 
@@ -20,7 +21,10 @@ public class SecondActivity extends Activity{
         Bundle b = intent.getExtras();
         url = b.getString("URL");
         WebView myWebView = (WebView) findViewById(R.id.webview);
+       // WebSettings webSettings = myWebView.getSettings();
+        //webSettings.setJavaScriptEnabled(true);
         myWebView.loadUrl(url);
+
 
 
     }

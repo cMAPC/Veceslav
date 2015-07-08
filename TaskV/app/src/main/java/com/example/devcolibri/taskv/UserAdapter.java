@@ -29,6 +29,9 @@ public class UserAdapter extends ArrayAdapter<User> {
         if (obj.getFork().equals("true")) {
             tvFork.setText("F");
         }
+        else {
+            tvFork.setText("");
+        }
         return convertView;
     }
 }

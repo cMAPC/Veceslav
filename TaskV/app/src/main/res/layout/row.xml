@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/tvFork"
+        android:layout_margin="5dp"
         android:textAlignment="center"
         android:textColor="#d699000a"
         android:layout_alignBottom="@+id/tvDescription"

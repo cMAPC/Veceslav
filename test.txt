@@ -1,4 +1,7 @@
 marcel 
+<<<<<<< HEAD
 
 nu treb sa fie 
 
+=======
+>>>>>>> 8895ad104e7d45d9ef42caf186f9d9bacddcba3a
